@@ -1,0 +1,33 @@
+spec:
+  replicas: 1
+
+config:
+  reverseProxy: 
+    {
+      "Routes": {
+        "route1" : {
+          "ClusterId": "cms-usermanagement",
+          "Match": {
+            "Path": "/usermanagement/{**catch-all}"
+          },
+          "Transforms": [{ "PathPattern": "{**catch-all}" }]
+        }
+      },
+      "Clusters": {
+        "cms-usermanagement": {
+          "Destinations": {
+            "Default": {
+              "Address": "http://cms-user-management:80/",
+              "Swaggers": [
+                {
+                  "PrefixPath": "/usermanagement",
+                  "Paths": [
+                    "swagger/v1/swagger.json"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }

@@ -1,0 +1,8 @@
+apiVersion: v2
+name: api-gateway
+version: 1.0.0
+description: Api Gateway
+type: application
+keywords:
+  - gateway
+home: www.tlis.sk

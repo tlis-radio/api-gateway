@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E4B84A0A-12D4-414F-BBE4-510E16412834}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tlis.WebApiGateway", "src\Tlis.WebApiGateway\Tlis.WebApiGateway.csproj", "{59469B0E-8DAB-42D7-862F-2F31F496EAD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59469B0E-8DAB-42D7-862F-2F31F496EAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59469B0E-8DAB-42D7-862F-2F31F496EAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59469B0E-8DAB-42D7-862F-2F31F496EAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59469B0E-8DAB-42D7-862F-2F31F496EAD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59469B0E-8DAB-42D7-862F-2F31F496EAD6} = {E4B84A0A-12D4-414F-BBE4-510E16412834}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "spec": {
+      "properties": {
+        "replicas": {
+          "type": "integer"
+        }
+      }
+    },
+    "config": {
+      "properties": {
+        "ReverseProxy": {
+          type: "string"
+        }
+      }
+    }
+  }
+}
