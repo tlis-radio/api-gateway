@@ -17,7 +17,7 @@ config:
         "cms-usermanagement": {
           "Destinations": {
             "Default": {
-              "Address": "http://cms-user-management:80/",
+              "Address": "http://cms-user-management/",
               "Swaggers": [
                 {
                   "PrefixPath": "/usermanagement",
