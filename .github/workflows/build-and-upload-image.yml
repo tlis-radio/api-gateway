@@ -92,4 +92,4 @@ jobs:
     # upgrade the chart
     - name: 'Upgrade chart'
       run: |
-        helm upgrade api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/api-gateway --kube-context tlis --version 1.1.0 --install --create-namespace --namespace cms-production
+        helm upgrade api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/api-gateway --kube-context tlis --version 1.2.0 --install --create-namespace --namespace cms-production
