@@ -23,9 +23,6 @@ spec:
           - mountPath: /app/appsettings.json
             name: config
             subPath: appsettings.json
-          - name: tls
-            mountPath: /etc/tls
-            readOnly: true
           ports:
             - containerPort: 80
               protocol: TCP
