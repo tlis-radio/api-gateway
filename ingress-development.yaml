@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway
+  namespace: cms-development
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - secretName: api-gateway
+    hosts:
+    - cms.api.development.tlis.sk
+  rules:
+  - host: cms.api.development.tlis.sk
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: api-gateway
+            port:
+              number: 80
