@@ -11,6 +11,13 @@ config:
             "Path": "/usermanagement/{**catch-all}"
           },
           "Transforms": [{ "PathPattern": "{**catch-all}" }]
+        },
+        "route2" : {
+          "ClusterId": "cms-showmanagement",
+          "Match": {
+            "Path": "/showmanagement/{**catch-all}"
+          },
+          "Transforms": [{ "PathPattern": "{**catch-all}" }]
         }
       },
       "Clusters": {
@@ -21,6 +28,21 @@ config:
               "Swaggers": [
                 {
                   "PrefixPath": "/usermanagement",
+                  "Paths": [
+                    "swagger/v1/swagger.json"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "cms-showmanagement": {
+          "Destinations": {
+            "Default": {
+              "Address": "http://cms-show-management/",
+              "Swaggers": [
+                {
+                  "PrefixPath": "/showmanagement",
                   "Paths": [
                     "swagger/v1/swagger.json"
                   ]
