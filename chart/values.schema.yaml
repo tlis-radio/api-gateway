@@ -5,6 +5,9 @@
       "properties": {
         "replicas": {
           "type": "integer"
+        },
+        "imagePullSecrets": {
+          "type": "string"
         }
       }
     },

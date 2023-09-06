@@ -24,8 +24,8 @@ jobs:
         password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
     # build and push the image
     - run: |
-        docker build . --file Dockerfile --tag ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/api-gateway:${{ github.sha }}
-        docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/api-gateway:${{ github.sha }}
+        docker build . --file Dockerfile --tag ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/cms-api-gateway:${{ github.sha }}
+        docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/cms-api-gateway:${{ github.sha }}
   build-helm-chart-and-push-to-acr:
     name: 'Build helm chart and push to ACR'
     environment: 'development'
@@ -48,7 +48,7 @@ jobs:
       run: cd chart && helm package . --app-version ${{ github.sha }}
     # push the chart
     - name: 'Push chart to acr'
-      run: cd chart && helm push api-gateway-* oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm
+      run: cd chart && helm push cms-api-gateway-* oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm
   helm-chart-upgrade:
     environment: 'development'
     name: 'Upgrade helm chart'
@@ -91,4 +91,4 @@ jobs:
     # upgrade the chart
     - name: 'Upgrade chart'
       run: |
-        helm upgrade api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/api-gateway --kube-context tlis --version 1.2.1 --install --create-namespace --namespace cms-development
+        helm upgrade cms-api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/cms-api-gateway --kube-context tlis --version 1.2.1 --install --create-namespace --namespace cms-development

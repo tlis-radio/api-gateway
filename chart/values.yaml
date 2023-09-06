@@ -1,5 +1,6 @@
 spec:
   replicas: 1
+  imagePullSecrets: ""
 
 config:
   reverseProxy: 
