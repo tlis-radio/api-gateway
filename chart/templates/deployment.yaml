@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}
-          image: tliscr.azurecr.io/api-gateway:{{ .Chart.AppVersion }}
+          image: tliscr.azurecr.io/cms-api-gateway:{{ .Chart.AppVersion }}
           imagePullPolicy: IfNotPresent
           volumeMounts:
           - mountPath: /app/appsettings.json
