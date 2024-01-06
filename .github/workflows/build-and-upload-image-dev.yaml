@@ -80,8 +80,8 @@ jobs:
     - name: 'Get K8s context'
       uses: azure/aks-set-context@v3
       with:
-        resource-group: TlisKubernetes
-        cluster-name: tlis
+        resource-group: K8s
+        cluster-name: tlis-k8s
         admin: 'false'
         use-kubelogin: 'true'
     # login to Azure Container Registry
@@ -91,4 +91,4 @@ jobs:
     # upgrade the chart
     - name: 'Upgrade chart'
       run: |
-        helm upgrade cms-api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/cms-api-gateway --kube-context tlis --version 1.2.1 --install --create-namespace --namespace cms-development
+        helm upgrade cms-api-gateway oci://${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/helm/cms-api-gateway --kube-context tlis-k8s --version 1.2.1 --install --create-namespace --namespace cms-staging
