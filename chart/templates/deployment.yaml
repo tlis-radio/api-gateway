@@ -29,8 +29,6 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
-      nodeSelector:
-        agentpool: buffedpoll
       {{ if .Values.spec.imagePullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.spec.imagePullSecrets | quote }}
