@@ -19,6 +19,13 @@ config:
             "Path": "/showmanagement/{**catch-all}"
           },
           "Transforms": [{ "PathPattern": "{**catch-all}" }]
+        },
+        "route3": {
+          "ClusterId": "cms-imageassetmanagement",
+          "Match": {
+            "Path": "/imageassetmanagement/{**catch-all}"
+          },
+          "Transforms": [{ "PathPattern": "{**catch-all}" }]
         }
       },
       "Clusters": {
@@ -44,6 +51,21 @@ config:
               "Swaggers": [
                 {
                   "PrefixPath": "/showmanagement",
+                  "Paths": [
+                    "swagger/v1/swagger.json"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "cms-imageassetmanagement": {
+          "Destinations": {
+            "Default": {
+              "Address": "http://cms-image-asset-management/",
+              "Swaggers": [
+                {
+                  "PrefixPath": "/imageassetmanagement",
                   "Paths": [
                     "swagger/v1/swagger.json"
                   ]
