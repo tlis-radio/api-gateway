@@ -26,6 +26,13 @@ config:
             "Path": "/imageassetmanagement/{**catch-all}"
           },
           "Transforms": [{ "PathPattern": "{**catch-all}" }]
+        },
+        "route4": {
+          "ClusterId": "cms-programmanagement",
+          "Match": {
+            "Path": "/programmanagement/{**catch-all}"
+          },
+          "Transforms": [{ "PathPattern": "{**catch-all}" }]
         }
       },
       "Clusters": {
@@ -66,6 +73,21 @@ config:
               "Swaggers": [
                 {
                   "PrefixPath": "/imageassetmanagement",
+                  "Paths": [
+                    "swagger/v1/swagger.json"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "cms-programmanagement": {
+          "Destinations": {
+            "Default": {
+              "Address": "http://cms-program-management/",
+              "Swaggers": [
+                {
+                  "PrefixPath": "/programmanagement",
                   "Paths": [
                     "swagger/v1/swagger.json"
                   ]
