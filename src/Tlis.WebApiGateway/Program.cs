@@ -4,36 +4,43 @@ using Tlis.WebApiGateway;
 using Yarp.ReverseProxy.Swagger;
 using Yarp.ReverseProxy.Swagger.Extensions;
 
+namespace Tlis.WebApiGateway;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-builder.Services.AddSwaggerGen(options =>
+public static class Program
 {
-    options.DocumentFilter<ReverseProxyDocumentFilter>();
-});
-
-var configuration = builder.Configuration.GetSection("ReverseProxy");
-builder.Services
-    .AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
-    .AddSwagger(configuration);
-    
-var app = builder.Build();
-
-app.UseSwagger();
-app.UseSwaggerUI(options =>
-{
-    var config = app.Services.GetRequiredService<IOptionsMonitor<ReverseProxyDocumentFilterConfig>>().CurrentValue;
-    foreach (var cluster in config.Clusters)
+    static void Main(string[] args)
     {
-        options.SwaggerEndpoint($"/swagger/{cluster.Key}/swagger.json", cluster.Key);
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.DocumentFilter<ReverseProxyDocumentFilter>();
+        });
+
+        var configuration = builder.Configuration.GetSection("ReverseProxy");
+        builder.Services
+            .AddReverseProxy()
+            .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+            .AddSwagger(configuration);
+            
+        var app = builder.Build();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            var config = app.Services.GetRequiredService<IOptionsMonitor<ReverseProxyDocumentFilterConfig>>().CurrentValue;
+            foreach (var cluster in config.Clusters)
+            {
+                options.SwaggerEndpoint($"/swagger/{cluster.Key}/swagger.json", cluster.Key);
+            }
+        });
+
+        app.MapReverseProxy();
+        app.UseHttpsRedirection();
+
+        app.Run();
     }
-});
-
-app.MapReverseProxy();
-app.UseHttpsRedirection();
-
-app.Run();
+}
