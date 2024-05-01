@@ -13,6 +13,7 @@ jobs:
       azure-container-registry: ${{ vars.AZURE_CONTAINER_REGISTRY }}
       release-name: ${{ vars.RELEASE_NAME }}
       image-version: ${{ github.ref_name }}
+      dockerfile: Dockerfile
       environment: production
     secrets:
       container-registry-username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
