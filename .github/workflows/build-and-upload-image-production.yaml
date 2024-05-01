@@ -35,7 +35,7 @@ jobs:
       azure-k8s-resource-group: K8s
       azure-k8s-cluster-name: tlis-k8s
       azure-container-registry: ${{ vars.AZURE_CONTAINER_REGISTRY }}
-      chart-version: 1.0.0
+      chart-version: 1.2.1
       helm-k8s-context: tlis-k8s
       helm-deployment-namespace: cms-production
       release-name: ${{ vars.RELEASE_NAME }}
